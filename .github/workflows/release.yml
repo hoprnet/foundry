@@ -9,7 +9,7 @@ on:
     workflow_dispatch:
 
 env:
-    IS_NIGHTLY: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
+    IS_NIGHTLY: ${{ github.event_name == 'schedule' || ( github.event_name == 'workflow_dispatch' && github.ref_type != 'tag' ) }}
     CARGO_TERM_COLOR: always
 
 jobs:
